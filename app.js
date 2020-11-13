@@ -56,7 +56,7 @@ app.set('port',(process.env.port || 3100));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false}));
 
-app.use(cors({credentials: true, origin: "http://localhost:3000"}));
+app.use(cors({credentials: true, origin: "https://ng-pokemons-app-with-srv.firebaseapp.com"}));
 app.use('/api/v1', api); 
 app.use('/auth',auth);
 app.use((req,res) => {
@@ -65,7 +65,7 @@ app.use((req,res) => {
     res.json({ msg : "404 - Page not found", err:err});
 });
 
-mongoose.connect('mongodb://localhost:27017/ngpokemonsapp', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://ngpokemonsrv:bmJlc19iiJjB9YPK@ngpokemonsrv.zb6cf.mongodb.net/ngpokemonsapp?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 connection.on('error', () => { 
     console.error(`connection to MongoDB error : ${err.message}`);
 });
